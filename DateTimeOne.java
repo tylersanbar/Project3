@@ -1,8 +1,11 @@
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DateTimeOne extends MesoDateTimeOneAbstract
 {
 	private Calendar date;
+	//date formatted as 10/10/2019 06:24 PM
+	SimpleDateFormat format = new SimpleDateFormat("M/d/YYYY h:mm a");
 	
 	DateTimeOne() {
 		date = Calendar.getInstance();
@@ -10,14 +13,18 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 	
 	@Override
 	int getValueOfSecond() {
-		return date.get(Calendar.SECOND);
+		int second = date.get(Calendar.SECOND);
+		System.out.println("The value of Second now: " + second);
+		return second;
 	}
 
 	@Override
 	void dateTimeNow() {
 		date = Calendar.getInstance();
-		//date formatted as 10/10/2019 06:24 PM
-		System.out.format("Current Date/Time %tm/%td/%tY %tI:%tM %Tp\n",date);
+
+		String dateFormat = format.format(date.getTime());
+
+		System.out.println("Current Date/Time " + dateFormat);
 	}
 
 	@Override
