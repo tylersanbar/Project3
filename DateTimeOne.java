@@ -1,5 +1,6 @@
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.TimeZone;
 
 public class DateTimeOne extends MesoDateTimeOneAbstract
@@ -61,10 +62,25 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 		System.out.format("Time on Server: %1s\nGMT: %2s\nBST (90E): %5s\nCST (90W): %4s", formatServer, formatGMT, formatBST, formatCST);
 		
 	}
-
+/**			GMT: 10/08/2019 20:26
+			BST: 10/09/2019 02:26
+			CST: 10/08/2019 15:26
+			**/
 	@Override
-	void dateTimeDifferentZone() {
-		// TODO Auto-generated method stub
+	public void dateTimeDifferentZone() {
+	HashMap<String, String> hash = new HashMap<String, String>();
+	String zone1 = "GMT";
+	String dateTime1 = "10/08/2019 20:26";
+	String zone2 = "BST";
+	String dateTime2 = "10/09/2019 02:26";
+	String zone3 = "CST";
+	String dateTime3 = "10/08/2019 15:26";
+		
+	hash.put(zone1,dateTime1);
+	hash.put(zone2,dateTime2);
+	hash.put(zone3,dateTime3);
+	
+	System.out.println(zone1 + ": " + dateTime1 + "\n" + zone2 + ": " + dateTime2 + "\n" + zone3 + ": " + dateTime3);
 		
 	}
 
