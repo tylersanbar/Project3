@@ -1,14 +1,23 @@
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedSet;
 import java.util.TimeZone;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class DateTimeOne extends MesoDateTimeOneAbstract
 {
 	private Calendar dateServer;
 	//date formatted as 10/10/2019 06:24 PM
-	SimpleDateFormat format = new SimpleDateFormat("M/d/YYYY h:mm a");
+	SimpleDateFormat format = new SimpleDateFormat("MM/dd/YYYY h:mm a");
 	String dateFormat;
+	HashMap<String, String> hash = new HashMap<String, String>();
 
 
 	
@@ -68,7 +77,7 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 			**/
 	@Override
 	public void dateTimeDifferentZone() {
-	HashMap<String, String> hash = new HashMap<String, String>();
+	
 	String zone1 = "GMT";
 	String dateTime1 = "10/08/2019 20:26";
 	String zone2 = "BST";
@@ -85,9 +94,53 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 	}
 
 	@Override
-	void timeZoneHashMap() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void timeZoneHashMap() {
+		//Adding on to hash
+		String zone4 = "ZST";
+		String dateTime4 = "11/05/2018 19:59";
+		String zone5 = "AST";
+		String dateTime5 = "10/01/2020 19:59";
+		hash.put(zone4, dateTime4);
+		hash.put(zone5, dateTime5);
+		//Creates hash 2, sorted hash and hash2
+		HashMap<String, String> hash2 = new HashMap<String, String>();
+		TreeMap<String, String> sortedHash = new TreeMap<String, String>(hash);
+		ArrayList<LocalDateTime> array = new ArrayList<LocalDateTime>();
+		//Fills data from hash to array and hash2
+		for(Map.Entry<String, String> entry: hash.entrySet()) {
+			hash2.put(entry.getValue(), entry.getKey());
+			array.add(LocalDateTime.parse(entry.getValue(),DateTimeFormatter.ofPattern("M/dd/yyyy H:mm")));
+		}
+		//Creates TreeMap sortedHash2 from hash2 which sorts it using natural ordering
+		TreeMap<String, String> sortedHash2 = new TreeMap<String, String>(hash2);
+		//Copies array to sortedArray and sorts in descending order
+		ArrayList<LocalDateTime> sortedArray = array;
+		sortedArray.sort(Collections.reverseOrder());
+		//Printing
+		//Format is "YYYY-m-dd'T'h:mm"
+		//Print Style 1
+		System.out.println("Print Style 1:");
+		for(Map.Entry<String, String> entry: sortedHash.entrySet()) { 
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		}
+		/* Print Style 2
+		 * System.out.println("Print Style 2:"); for(Map.Entry<String, String> entry:
+		 * hash2.entrySet()) { System.out.println(entry.getKey()); }
+		 */
+		//Print Style 3
+		System.out.println("Print Style 3:");
+		for(Map.Entry<String, String> entry: sortedHash2.entrySet()) { 
+			System.out.println(entry.getKey());
+		}
+		/* Print Style 4
+		 * System.out.println("Print Style 4:"); for(int i = 0; i < array.size(); i++) {
+		 * System.out.println(array.get(i)); }
+		 */
+		//Print Style 5
+		System.out.println("Print Style 5:");
+		for(int i = 0; i < sortedArray.size(); i++) {
+			System.out.println(sortedArray.get(i));
+		}
+		}
    
 }
