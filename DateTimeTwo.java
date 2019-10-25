@@ -1,12 +1,21 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class DateTimeTwo {
 	
 	private Calendar dateServer;
-	//date formatted as 10/10/2019 06:24 PM
+	//date.txt formatted as 05.05.2017
 	SimpleDateFormat format = new SimpleDateFormat("MM/dd/YYYY h:mm a");
+	DateTimeFormatter readFormat = DateTimeFormatter.ofPattern("M.dd.yyyy");
 	SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE");
 	String dateFormat;
 	HashMap<String, String> hash = new HashMap<String, String>();
@@ -35,7 +44,31 @@ public class DateTimeTwo {
 	}
 
 	public void compareYear() {
-		// TODO Auto-generated method stub
+		LocalDate readDate;
+		LocalDate todayDate = LocalDate.now();
+		Period difference;
+		String leapYear;
+		
+		try {
+			@SuppressWarnings("resource")
+			BufferedReader br = new BufferedReader(new FileReader("Dates.txt"));
+			String strDate = br.readLine();
+			while(strDate != null) {
+
+				readDate = LocalDate.parse(strDate, readFormat);
+				if(readDate.isLeapYear()) {
+					leapYear = " is";
+				}
+				else {
+					leapYear = " is not";
+				}
+				difference = Period.between(todayDate, readDate);
+				System.out.println(readDate.getYear() + leapYear +" a leap year, and Difference: " + Math.abs(difference.getYears()) + " years, " + Math.abs(difference.getMonths()) + " months, and " + Math.abs(difference.getDays()) +  " days.");
+				strDate = br.readLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
