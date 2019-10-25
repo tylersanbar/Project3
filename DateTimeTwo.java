@@ -1,28 +1,28 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class DateTimeTwo {
 	
-	private Calendar dateServer;
 	//date.txt formatted as 05.05.2017
-	SimpleDateFormat format = new SimpleDateFormat("MM/dd/YYYY h:mm a");
+	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-M-dd");
 	DateTimeFormatter readFormat = DateTimeFormatter.ofPattern("M.dd.yyyy");
 	SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE");
 	String dateFormat;
-	HashMap<String, String> hash = new HashMap<String, String>();
+	HashMap<LocalDate, Integer> hash = new HashMap<LocalDate, Integer>();
+	TreeMap<LocalDate, Integer> tree;
 	
 	public DateTimeTwo() {
-		dateServer = Calendar.getInstance();
-		dateFormat = format.format(dateServer.getTime());
+		//dateServer = Calendar.getInstance();
+		//dateFormat = format.format(dateServer.getTime());
 	}
 	public void daysOfCurrentMonth() {
 		Calendar dateMonth = Calendar.getInstance();
@@ -53,9 +53,12 @@ public class DateTimeTwo {
 			@SuppressWarnings("resource")
 			BufferedReader br = new BufferedReader(new FileReader("Dates.txt"));
 			String strDate = br.readLine();
+			int value = 1;
+		
 			while(strDate != null) {
-
 				readDate = LocalDate.parse(strDate, readFormat);
+				hash.put(readDate, value);
+				value++;
 				if(readDate.isLeapYear()) {
 					leapYear = " is";
 				}
@@ -73,13 +76,17 @@ public class DateTimeTwo {
 	}
 
 	public void dateHashMap() {
-		// TODO Auto-generated method stub
+		for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
+			System.out.println(format.format(entry.getKey()) + ":" + entry.getValue());
+		}
 		
 	}
 
 	public void dateHashMapSorted() {
-		// TODO Auto-generated method stub
-		
+		tree = new TreeMap<LocalDate, Integer>(hash);
+		for(Map.Entry<LocalDate, Integer> entry: tree.entrySet()) {
+			System.out.println(format.format(entry.getKey()) + ":" + entry.getValue());
+		}
 	}
 
 }
