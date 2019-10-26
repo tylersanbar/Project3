@@ -19,7 +19,8 @@ public class MesoAsciiCal extends MesoAsciiAbstract
 		for(int i = 0; i < 4; i++) {
 			sum += charArray[i];
 		}
-		average1 = Math.round(sum / 4.0);
+		average1 = Math.floor((sum/4.0) + 0.75);
+		
 		return (int) Math.ceil((average1 + average2) / 2.0);
 	}
    

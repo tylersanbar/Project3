@@ -13,7 +13,7 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 {
 	private Calendar dateServer;
 	//date formatted as 10/10/2019 06:24 PM
-	SimpleDateFormat format = new SimpleDateFormat("MM/dd/YYYY h:mm a");
+	SimpleDateFormat format = new SimpleDateFormat("MM/dd/YYYY hh:mm a");
 	String dateFormat;
 	HashMap<String, String> hash = new HashMap<String, String>();
 
@@ -33,8 +33,9 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 
 	@Override
 	public void dateTimeNow() {
-		new DateTimeOne();
-		System.out.println("Current Date/Time " + dateFormat);
+		//dateServer = Calendar.getInstance();
+		//dateFormat = format.format(dateServer.getTime());
+		System.out.println("Current Date/Time: " + dateFormat);
 	}
 
 	@Override
