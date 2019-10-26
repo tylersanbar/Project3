@@ -13,8 +13,8 @@ import java.util.TreeMap;
 public class DateTimeTwo {
 	
 	//date.txt formatted as 05.05.2017
-	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-M-dd");
-	DateTimeFormatter readFormat = DateTimeFormatter.ofPattern("M.dd.yyyy");
+	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	DateTimeFormatter readFormat = DateTimeFormatter.ofPattern("MM.dd.yyyy");
 	SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE");
 	String dateFormat;
 	HashMap<LocalDate, Integer> hash = new HashMap<LocalDate, Integer>();

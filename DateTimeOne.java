@@ -40,7 +40,7 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 	@Override
 	void sleepForFiveSec() {
 		try {
-			this.wait(5);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,7 +54,7 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 			**/
 	@Override
 	void dateTimeOfOtherCity() {
-		SimpleDateFormat cityFormat = new SimpleDateFormat("H:mm");
+		SimpleDateFormat cityFormat = new SimpleDateFormat("k:mm");
 		String formatServer = cityFormat.format(dateServer.getTime());
 		
 		cityFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
@@ -66,7 +66,7 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 		cityFormat.setTimeZone(TimeZone.getTimeZone("CST"));
 		String formatCST = cityFormat.format(dateServer.getTime());
 		
-		System.out.format("Time on Server: %1s\nGMT: %2s\nBST (90E): %5s\nCST (90W): %4s", formatServer, formatGMT, formatBST, formatCST);
+		System.out.format("Time on Server: %1s\nGMT: %2s\nBST (90E): %3s\nCST (90W): %4s", formatServer, formatGMT, formatBST, formatCST);
 		
 	}
 /**			GMT: 10/08/2019 20:26
@@ -135,7 +135,7 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 		 * System.out.println(array.get(i)); }
 		 */
 		//Print Style 5
-		System.out.println("Print Style 5:");
+		System.out.println("Print Style 5: Final sorted Array:");
 		for(int i = 0; i < sortedArray.size(); i++) {
 			System.out.println(sortedArray.get(i));
 		}

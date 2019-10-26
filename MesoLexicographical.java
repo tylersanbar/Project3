@@ -8,7 +8,7 @@ public class MesoLexicographical extends MesoSortedAbstract
 	public MesoLexicographical(HashMap<String, Integer> asciiVal) {
 		TreeMap<String, Integer> tree = new TreeMap<String, Integer>(asciiVal);
 		for(Map.Entry<String, Integer> entry: tree.entrySet()) {
-			System.out.println(entry.getKey() + " " + entry.getValue());
+			System.out.println(entry.getKey());
 		}
 	}
 
