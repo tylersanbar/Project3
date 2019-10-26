@@ -36,7 +36,8 @@ public class DateTimeTwo {
 
 	public void daysOfAnyMonth(int i, int j) {
 		Calendar dateAnyMonth = Calendar.getInstance();
-		dateAnyMonth.set(j + 1, i + 1, 15);
+		dateAnyMonth.clear();
+		dateAnyMonth.set(j, i - 1, 15);
 		String fiftheenthDay = dayFormat.format(dateAnyMonth.getTime()).toUpperCase();
 		dateAnyMonth.set(Calendar.DAY_OF_MONTH, dateAnyMonth.getActualMaximum(Calendar.DAY_OF_MONTH));;
 		String lastDay = dayFormat.format(dateAnyMonth.getTime()).toUpperCase();
