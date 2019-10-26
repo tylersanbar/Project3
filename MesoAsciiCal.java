@@ -1,15 +1,26 @@
 
 public class MesoAsciiCal extends MesoAsciiAbstract 
 {
-
+	MesoStation mesoStation;
+	char[] charArray = new char[4];
+	
 	public MesoAsciiCal(MesoStation mesoStation) {
-		// TODO Auto-generated constructor stub
+		this.mesoStation = mesoStation;
+		for(int i = 0; i < 4; i++) {
+			charArray[i] = mesoStation.getStID().charAt(i);
+		}
 	}
 
 	@Override
 	int calAverage() {
-		// TODO Auto-generated method stub
-		return 0;
+		double sum = 0.0;
+		double average1;
+		double average2 = 79;
+		for(int i = 0; i < 4; i++) {
+			sum += charArray[i];
+		}
+		average1 = Math.round(sum / 4.0);
+		return (int) Math.ceil((average1 + average2) / 2.0);
 	}
    
 }
