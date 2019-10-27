@@ -8,84 +8,103 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DateSortingUsingAlgorithm {
+	
 	HashMap<LocalDate, Integer> hash = new HashMap<LocalDate, Integer>();
 	//2018-11-12
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	ArrayList<String> unsorted = new ArrayList<String>();
 	ArrayList<String> sorted;
+	String[] unsortedArray;
+	String[] sortedAscendingArray;
+	String[] sortedDescendingArray;
+	private int numKeys;
+	
+	
+	public DateSortingUsingAlgorithm() {
+		//Reads file
+		try {
+			read("SortingDates.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		numKeys = hash.size();
+		unsortedArray = new String[numKeys];
+		sortedAscendingArray = new String[numKeys];
+		sortedDescendingArray = new String[numKeys];
+		//Puts map keys into an unsorted array
+		int i = 0;
+		for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
+			unsortedArray[i] = (format.format(entry.getKey()));
+			i++;
+		}
+	}
 	
 	public void dateHashMapSortedDescending() {
-		try {
-			read("SortingDates.txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
-			unsorted.add(format.format(entry.getKey()));
-		}
-		int sortedSize;
-		sorted = new ArrayList<String>();
-		String sort = unsorted.remove(0);
-		sorted.add(sort);
-		while(unsorted.size() > 0) {
-			sortedSize = sorted.size();
-			for(int j = 0; j < sortedSize; j++) {
-				//If removed piece is less than sorted, add before
-				if(sort.compareTo(sorted.get(j)) <= 0) {
-					sorted.add(j, sort);
-					break;
+		Boolean notSorted = true;
+		int tempValue;
+		while(notSorted == true) {
+			notSorted = false;
+			for(Map.Entry<LocalDate, Integer> entry1: hash.entrySet()) {
+				for(Map.Entry<LocalDate, Integer> entry2: hash.entrySet()) {
+					//If entry1 is after entry2 and value 1 is less than value 2, swap values
+					if(entry1.getKey().isAfter(entry2.getKey()) & entry1.getValue() < entry2.getValue()) {
+						tempValue = entry1.getValue();
+						entry1.setValue(entry2.getValue());
+						entry2.setValue(tempValue);
+						notSorted = true;
+					}
+					//If entry1 is before entry2 and value 1 is greater than value 2, swap values
+					else if(entry1.getKey().isBefore(entry2.getKey()) & entry1.getValue() > entry2.getValue()) {
+						tempValue = entry1.getValue();
+						entry1.setValue(entry2.getValue());
+						entry2.setValue(tempValue);
+						notSorted = true;
+					}
 				}
-				//If last element, add to end of list
-				else if(sorted.size() == j + 1) {
-					sorted.add(sort);
-				}
+			}
 		}
-			sort = unsorted.remove(0);
-		}
-
-		for(int i = sorted.size() - 1; i >= 0; i--) {
-			System.out.println(sorted.get(i));
+		for(int i = hash.size(); i >= 1; i--) {
+			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
+				if(entry.getValue() == i) {
+					System.out.println(format.format(entry.getKey()));
+				}	
+			}
 		}
 	}
-
 	public void dateHashMapSorted() {
-		try {
-			read("SortingDates.txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
-			unsorted.add(format.format(entry.getKey()));
-		}
-		int sortedSize;
-		sorted = new ArrayList<String>();
-		String sort = unsorted.remove(0);
-		sorted.add(sort);
-		while(unsorted.size() > 0) {
-			sortedSize = sorted.size();
-			for(int j = 0; j < sortedSize; j++) {
-				//If removed piece is less than sorted, add before
-				if(sort.compareTo(sorted.get(j)) <= 0) {
-					sorted.add(j, sort);
-					break;
+		Boolean notSorted = true;
+		int tempValue;
+		while(notSorted == true) {
+			notSorted = false;
+			for(Map.Entry<LocalDate, Integer> entry1: hash.entrySet()) {
+				for(Map.Entry<LocalDate, Integer> entry2: hash.entrySet()) {
+					//If entry1 is after entry2 and value 1 is less than value 2, swap values
+					if(entry1.getKey().isAfter(entry2.getKey()) & entry1.getValue() < entry2.getValue()) {
+						tempValue = entry1.getValue();
+						entry1.setValue(entry2.getValue());
+						entry2.setValue(tempValue);
+						notSorted = true;
+					}
+					//If entry1 is before entry2 and value 1 is greater than value 2, swap values
+					else if(entry1.getKey().isBefore(entry2.getKey()) & entry1.getValue() > entry2.getValue()) {
+						tempValue = entry1.getValue();
+						entry1.setValue(entry2.getValue());
+						entry2.setValue(tempValue);
+						notSorted = true;
+					}
 				}
-				//If last element, add to end of list
-				else if(sorted.size() == j + 1) {
-					sorted.add(sort);
-				}
+			}
+			
 		}
-			sort = unsorted.remove(0);
-		}
-
-		for(int i = 0; i < sorted.size(); i++) {
-			System.out.println(sorted.get(i));
+		for(int i = 1; i <= hash.size(); i++) {
+			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
+				if(entry.getValue() == i) {
+					System.out.println(format.format(entry.getKey()));
+				}	
+			}
 		}
 	}
-	
 	private void read(String filename) throws IOException
     {
     	LocalDate date;
