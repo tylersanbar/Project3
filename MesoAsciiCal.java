@@ -1,9 +1,16 @@
 
+/**
+ * @author tyler
+ *
+ */
 public class MesoAsciiCal extends MesoAsciiAbstract 
 {
 	MesoStation mesoStation;
 	char[] charArray = new char[4];
 	
+	/**
+	 * @param mesoStation
+	 */
 	public MesoAsciiCal(MesoStation mesoStation) {
 		this.mesoStation = mesoStation;
 		for(int i = 0; i < 4; i++) {
@@ -11,6 +18,9 @@ public class MesoAsciiCal extends MesoAsciiAbstract
 		}
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	int calAverage() {
 		double sum = 0.0;

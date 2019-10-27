@@ -6,12 +6,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author tyler
+ *
+ */
 public class DateSortingUsingAlgorithm {
 	
 	HashMap<LocalDate, Integer> hash = new HashMap<LocalDate, Integer>();
 	//2018-11-12
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
+	/**
+	 * 
+	 */
 	public DateSortingUsingAlgorithm() {
 		//Reads file
 		try {
@@ -24,6 +31,9 @@ public class DateSortingUsingAlgorithm {
 		valueSort();
 	}
 	//Sorts based on HashMap values
+	/**
+	 * Sorts values in ascending order of LocalDate keys
+	 */
 	public void valueSort() {
 		Boolean notSorted = true;
 		int tempValue;
@@ -49,7 +59,9 @@ public class DateSortingUsingAlgorithm {
 			}
 		}
 	}
-	//Prints sorted Array Descending
+	/**
+	 * Prints sorted Array Descending
+	 */
 	public void dateHashMapSortedDescending() {
 
 		for(int i = hash.size(); i >= 1; i--) {
@@ -60,7 +72,9 @@ public class DateSortingUsingAlgorithm {
 			}
 		}
 	}	
-	//Prints sorted Array Ascending
+	/**
+	 * Prints sorted Array Ascending
+	 */
 	public void dateHashMapSorted() {
 		for(int i = 1; i <= hash.size(); i++) {
 			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
@@ -70,7 +84,11 @@ public class DateSortingUsingAlgorithm {
 			}
 		}
 	}
-	//Reads file, creates HashMap and assigns values for each element starting at 1
+	/**
+	 * Reads file, creates HashMap and assigns values for each element starting at 1
+	 * @param filename
+	 * @throws IOException
+	 */
 	private void read(String filename) throws IOException
     {
     	LocalDate date;

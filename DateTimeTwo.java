@@ -10,6 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author tyler
+ *
+ */
 public class DateTimeTwo {
 	
 	//date.txt formatted as 05.05.2017
@@ -20,10 +24,16 @@ public class DateTimeTwo {
 	HashMap<LocalDate, Integer> hash = new HashMap<LocalDate, Integer>();
 	TreeMap<LocalDate, Integer> tree;
 	
+	/**
+	 * 
+	 */
 	public DateTimeTwo() {
 		//dateServer = Calendar.getInstance();
 		//dateFormat = format.format(dateServer.getTime());
 	}
+	/**
+	 * 
+	 */
 	public void daysOfCurrentMonth() {
 		Calendar dateMonth = Calendar.getInstance();
 		dateMonth.set(Calendar.DAY_OF_MONTH, 10);
@@ -34,6 +44,10 @@ public class DateTimeTwo {
 		
 	}
 
+	/**
+	 * @param i
+	 * @param j
+	 */
 	public void daysOfAnyMonth(int i, int j) {
 		Calendar dateAnyMonth = Calendar.getInstance();
 		dateAnyMonth.clear();
@@ -44,6 +58,9 @@ public class DateTimeTwo {
 		System.out.println("For the year (" + j + ") and month (" + i + "), the fifteenth day is " + fiftheenthDay + " and the last day is " + lastDay);
 	}
 
+	/**
+	 * 
+	 */
 	public void compareYear() {
 		LocalDate readDate;
 		LocalDate todayDate = LocalDate.now();
@@ -76,6 +93,9 @@ public class DateTimeTwo {
 		
 	}
 
+	/**
+	 * 
+	 */
 	public void dateHashMap() {
 		for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
 			System.out.println(format.format(entry.getKey()) + ":" + entry.getValue());
@@ -83,6 +103,9 @@ public class DateTimeTwo {
 		
 	}
 
+	/**
+	 * 
+	 */
 	public void dateHashMapSorted() {
 		tree = new TreeMap<LocalDate, Integer>(hash);
 		for(Map.Entry<LocalDate, Integer> entry: tree.entrySet()) {

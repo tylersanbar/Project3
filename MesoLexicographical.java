@@ -7,6 +7,9 @@ public class MesoLexicographical extends MesoSortedAbstract
 	TreeMap<String, Integer> tree;
 	HashMap<String, Integer> asciiVal;
 	
+	/**
+	 * @param asciiVal
+	 */
 	public MesoLexicographical(HashMap<String, Integer> asciiVal) {
 		this.asciiVal = asciiVal;
 		tree = new TreeMap<String, Integer>(asciiVal);
@@ -16,6 +19,9 @@ public class MesoLexicographical extends MesoSortedAbstract
 		}
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	Map<String, Integer> sortedMap(HashMap<String, Integer> unsorted) {
 		tree = new TreeMap<String, Integer>(unsorted);
