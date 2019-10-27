@@ -20,9 +20,9 @@ public class DateSortingUsingAlgorithm {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		valueSort();
 	}
-	
-	public void dateHashMapSortedDescending() {
+	public void valueSort() {
 		Boolean notSorted = true;
 		int tempValue;
 		while(notSorted == true) {
@@ -46,6 +46,8 @@ public class DateSortingUsingAlgorithm {
 				}
 			}
 		}
+	}
+	public void dateHashMapSortedDescending() {
 		//Prints sorted Array Descending
 		for(int i = hash.size(); i >= 1; i--) {
 			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
@@ -56,29 +58,6 @@ public class DateSortingUsingAlgorithm {
 		}
 	}
 	public void dateHashMapSorted() {
-		Boolean notSorted = true;
-		int tempValue;
-		while(notSorted == true) {
-			notSorted = false;
-			for(Map.Entry<LocalDate, Integer> entry1: hash.entrySet()) {
-				for(Map.Entry<LocalDate, Integer> entry2: hash.entrySet()) {
-					//If entry1 is after entry2 and value 1 is less than value 2, swap values
-					if(entry1.getKey().isAfter(entry2.getKey()) & entry1.getValue() < entry2.getValue()) {
-						tempValue = entry1.getValue();
-						entry1.setValue(entry2.getValue());
-						entry2.setValue(tempValue);
-						notSorted = true;
-					}
-					//If entry1 is before entry2 and value 1 is greater than value 2, swap values
-					else if(entry1.getKey().isBefore(entry2.getKey()) & entry1.getValue() > entry2.getValue()) {
-						tempValue = entry1.getValue();
-						entry1.setValue(entry2.getValue());
-						entry2.setValue(tempValue);
-						notSorted = true;
-					}
-				}
-			}
-		}
 		//Prints sorted Array Ascending
 		for(int i = 1; i <= hash.size(); i++) {
 			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
