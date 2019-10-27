@@ -20,8 +20,10 @@ public class DateSortingUsingAlgorithm {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//Calls sorting algorithm
 		valueSort();
 	}
+	//Sorts based on HashMap values
 	public void valueSort() {
 		Boolean notSorted = true;
 		int tempValue;
@@ -47,8 +49,9 @@ public class DateSortingUsingAlgorithm {
 			}
 		}
 	}
+	//Prints sorted Array Descending
 	public void dateHashMapSortedDescending() {
-		//Prints sorted Array Descending
+
 		for(int i = hash.size(); i >= 1; i--) {
 			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
 				if(entry.getValue() == i) {
@@ -56,9 +59,9 @@ public class DateSortingUsingAlgorithm {
 				}	
 			}
 		}
-	}
+	}	
+	//Prints sorted Array Ascending
 	public void dateHashMapSorted() {
-		//Prints sorted Array Ascending
 		for(int i = 1; i <= hash.size(); i++) {
 			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
 				if(entry.getValue() == i) {
@@ -67,6 +70,7 @@ public class DateSortingUsingAlgorithm {
 			}
 		}
 	}
+	//Reads file, creates HashMap and assigns values for each element starting at 1
 	private void read(String filename) throws IOException
     {
     	LocalDate date;
