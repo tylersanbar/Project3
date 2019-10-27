@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,13 +11,6 @@ public class DateSortingUsingAlgorithm {
 	HashMap<LocalDate, Integer> hash = new HashMap<LocalDate, Integer>();
 	//2018-11-12
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	ArrayList<String> unsorted = new ArrayList<String>();
-	ArrayList<String> sorted;
-	String[] unsortedArray;
-	String[] sortedAscendingArray;
-	String[] sortedDescendingArray;
-	private int numKeys;
-	
 	
 	public DateSortingUsingAlgorithm() {
 		//Reads file
@@ -27,16 +19,6 @@ public class DateSortingUsingAlgorithm {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		numKeys = hash.size();
-		unsortedArray = new String[numKeys];
-		sortedAscendingArray = new String[numKeys];
-		sortedDescendingArray = new String[numKeys];
-		//Puts map keys into an unsorted array
-		int i = 0;
-		for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
-			unsortedArray[i] = (format.format(entry.getKey()));
-			i++;
 		}
 	}
 	
@@ -64,6 +46,7 @@ public class DateSortingUsingAlgorithm {
 				}
 			}
 		}
+		//Prints sorted Array Descending
 		for(int i = hash.size(); i >= 1; i--) {
 			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
 				if(entry.getValue() == i) {
@@ -95,8 +78,8 @@ public class DateSortingUsingAlgorithm {
 					}
 				}
 			}
-			
 		}
+		//Prints sorted Array Ascending
 		for(int i = 1; i <= hash.size(); i++) {
 			for(Map.Entry<LocalDate, Integer> entry: hash.entrySet()) {
 				if(entry.getValue() == i) {

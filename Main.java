@@ -38,7 +38,7 @@ public class Main
 		
 		/**
 		 * Section 1
-		 * Current value of “Second” will be stored in vlaueOfSecondNow 
+		 * Current value of Second will be stored in vlaueOfSecondNow 
 		 * and will print as, "The value of Second now: 58"
 		 * Remember, this is the format only, value should be the current time.
 		 */
@@ -203,7 +203,7 @@ public class Main
 		 * For details first see the PDF Section 3 Extension
 		 * 
 		 */
-		String stId = "OKCE";
+		String stId = "NRMN";
 		MesoAsciiCal asciiAverage = new MesoAsciiCal(new MesoStation(stId));
 		int asciiAvg = asciiAverage.calAverage();		
 
